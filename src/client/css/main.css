@@ -18,6 +18,10 @@ body {
   word-spacing: 2px;
   -webkit-font-smoothing: antialiased;
 }
+#product-item.jumbotron {
+  background-color: rgba(100, 100, 100, 0.3);
+  border-radius: 5px;
+}
 .form-row {
   padding-top: 7px;
 }
