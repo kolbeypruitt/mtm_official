@@ -1,7 +1,7 @@
 {
-  "name": "node-stripe-charge",
+  "name": "mtm_official",
   "version": "1.0.0",
-  "description": "stripe integration with node and express",
+  "description": "Landing page and store for Mike T Music",
   "scripts": {
     "start": "node ./src/server/bin/www",
     "test": "mocha",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mjhea0/node-stripe-charge.git"
+    "url": "https://github.com/kolbeypruitt/mtm_official.git"
   },
   "keywords": [
     "nodejs",
@@ -22,7 +22,7 @@
     "bootstrap3",
     "stripe"
   ],
-  "author": "Michael Herman <michael@mherman.org>",
+  "author": "Kolbey Pruitt <kolbeypruitt@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.3.0",
