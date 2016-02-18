@@ -80,7 +80,6 @@ app.use('/', chargeRoutes);
 app.use('/auth', authRoutes);
 app.use('/api/v1/', apiRoutes);
 
-
 // *** error handlers *** //
 
 // catch 404 and forward to error handler

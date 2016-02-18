@@ -1,0 +1,117 @@
+{% extends '_base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+<section class="standard-section" id="photos">
+  <div class="container">
+    <h1>Photos</h1>
+    <a href="/">Go home</a>
+    <ul class="gallery">
+      <li draggable="true"><img src="http://i.imgur.com/oYQOh2A.jpg"/></li>
+      <li draggable="true"><img src="http://i.imgur.com/YiJtMYw.jpg"/></li>
+      <li draggable="true"><img src="http://i.imgur.com/tq5wLGX.jpg"/></li>
+      <li draggable="true"><img src="http://i.imgur.com/yOtoovE.jpg"/></li>
+      <li draggable="true"><img src="http://i.imgur.com/8Idyyiz.jpg"/></li>
+    </ul>
+  </div>
+</section>
+<style>
+  body{
+        background:black;
+      }
+      .gallery{
+        position:relative;
+        top:50px;
+        left:10px;
+      }
+      .gallery li{
+        position:absolute;
+        display:block;
+        margin:0;
+        list-style-type:none;
+        padding:10px 10px 30px 10px;
+        background:#fff;
+        border:solid black 1px;
+        -webkit-box-shadow:2px 2px 4px #333333;
+        -webkit-transition: -webkit-transform 0.5s ease;
+        -moz-box-shadow:2px 2px 4px #333333;
+        -moz-transition: -moz-transform 0.5s ease;
+        box-shadow:2px 2px 4px #333333;
+        transition: -moz-transform 0.5s ease;
+      }
+      .gallery li.active{
+        -webkit-transform:rotate(0deg) !important;
+        -moz-transform:rotate(0deg) !important;
+        transform:rotate(0deg) !important;
+      }
+      .gallery img{
+        display:block;
+        width:160px;
+        -webkit-transition: width 0.75s;
+        -moz-transition: width 0.75s;
+        transition: width 0.75s;
+      }
+      .gallery .active img{
+        display:block;
+        height:400px;
+        width:auto;
+      }
+      .site-footer {
+        position:absolute;
+        bottom:0;
+        width:100%;
+      }
+</style>
+<script>
+  
+    $(function(){
+      var zIndex= 1, endTop=-165, endLeft=400;
+
+      function randRotation(el){
+        var rot = Math.round( Math.random() * 90-45);
+        return $(el).css({
+          '-webkit-transform':'rotate('+rot+'deg)'
+          ,'-moz-transform':'rotate('+rot+'deg)'
+          ,'transform':'rotate('+rot+'deg)'
+        });
+      }
+
+      $('.gallery li').each(function(){
+        randRotation(this).css({
+          top:Math.round(Math.random()*50-25)
+          ,left:Math.round(Math.random()*50-25)
+          ,'zIndex': zIndex++
+        })
+        .click(function(){
+          var myZindex = $(this).css('zIndex');
+          $('.gallery li').not(this).each(function(){
+            if( $(this).css('zIndex') > myZindex ){
+              $(this).css('zIndex',$(this).css('zIndex')-1);
+            }
+          });
+          if(! $(this).is('.active')){
+            $(this).toggleClass('active')
+            .animate({
+              top:endTop
+              ,left:endLeft
+            })
+            .css({zIndex:$('.gallery li').length });
+            var activated=$('.gallery .active').not(this);
+            activated.length && activated.click();
+          }else{
+            $('.gallery li').each(function(){$(this).css('zIndex',parseInt($(this).css('zIndex'),10)+1)});
+            randRotation($(this).toggleClass('active'))
+            .animate({
+              top:Math.round(Math.random()*50-25)
+              ,left:Math.round(Math.random()*50-25)
+            }).css({zIndex:1});
+          }
+        });
+      });
+    });
+</script>
+
+{% endblock %}
