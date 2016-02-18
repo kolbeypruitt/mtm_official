@@ -1,30 +1,40 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a class="navbar-brand" href="/">Node + Stripe</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="/products">Products</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.admin %}
-          <li><a href="/auth/admin">Admin</a></li>
-          <li><a href="/auth/profile">Profile</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
-        {% elseif user %}
-          <li><a href="/auth/profile">Profile</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
-        {% else %}
-          <li><a href="/auth/login">Register/Login</a></li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
+<header class="st-navbar">
+    <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
+      <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sept-main-nav">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="img/mtm_logo.svg" alt="" class="img-responsive"></a>
+        </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="/products">Products</a></li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#home">Home</a></li>
+            <!-- <li><a href="#service">Service</a></li> -->
+            <li><a href="#portfolio">Photos</a></li>
+            <li><a href="/products">Store</a></li>
+            <!-- <li><a href="#blog">Blog</a></li> -->
+            <li><a href="#contact">Contact Me</a></li>
+            {% if user.admin %}
+              <li><a href="/auth/admin">Admin</a></li>
+              <li><a href="/auth/profile">Profile</a></li>
+              <li><a href="/auth/logout">Logout</a></li>
+            {% elseif user %}
+              <li><a href="/auth/profile">Profile</a></li>
+              <li><a href="/auth/logout">Logout</a></li>
+            {% else %}
+              <li><a href="/auth/login">Register/Login</a></li>
+            {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+  </header>
