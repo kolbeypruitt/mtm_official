@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="container">
+<section class="standard-section" id="profile">
   <h1>Profile</h1>
   <p class="lead">Welcome, {{user.email}}!</p>
   <a href="/">Go home</a>
@@ -19,6 +19,6 @@
     {% endfor %}
     </ul>
   {% endif %}
-</div>
+</section>
 
 {% endblock %}

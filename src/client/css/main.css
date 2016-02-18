@@ -10,7 +10,8 @@
  */
 body {
   font-family: "Open Sans";
-  color: #808080;
+  color: #fff;
+  background-color: black;
   font-weight: 400;
   font-size: 14px;
   line-height: 26px;
@@ -22,6 +23,9 @@ body {
 }
 p {
   margin-bottom: 26px;
+}
+p.lead {
+  color: #fff;
 }
 a {
   color: #4ecdc4;
@@ -39,7 +43,7 @@ h4,
 h5,
 h6 {
   font-family: "Oswald";
-  color: #4c4c4c;
+  color: #fff;
   letter-spacing: 1px;
   font-weight: 400;
 }
@@ -452,6 +456,9 @@ h6 {
     top: 25px;
     opacity: 0;
   }
+}
+.standard-section {
+  padding: 100px 0;
 }
 .home {
   background-image: url(../img/rayban.png);
@@ -1594,14 +1601,14 @@ textarea.formFieldError {
   border-color: #e34444 !important;
 }
 footer.site-footer {
-  background-color: #fcfcfc;
+  background-color: black;
   padding: 10px 0;
-  color: #9f9f9f;
+  color: #fcfcfc;
   font-size: 13px;
   text-align: center;
 }
 footer.site-footer a {
-  color: #808080;
+  color: #fcfcfc;
 }
 footer.site-footer a:hover {
   color: #4ecdc4;
@@ -1630,4 +1637,8 @@ footer.site-footer a:hover {
     cursor: pointer;
     width: 25%;
   }
+}
+
+#alert-flag {
+  margin-top: 80px;
 }
