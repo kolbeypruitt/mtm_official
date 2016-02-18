@@ -15,14 +15,12 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         {% for product in products %}
-          <div class="jumbotron" id="product-item">
-            <img src="{{ baseurl }}/img/joyfulNoise.png" alt="joyfulNoise">
-            <br>
-            <br>
-            <a href="/product/{{product._id.toString()}}">{{ product.name }}</a>
-            <br>
-            <p>${{ product.amount }}</p>
-          </div>
+          <img src="{{ baseurl }}/img/joyfulNoise.png" alt="joyfulNoise">
+          <br>
+          <br>
+          <a href="/product/{{product._id.toString()}}">{{ product.name }}</a>
+          <br>
+          <p>${{ product.amount }}</p>
         {% endfor %}
       </div>
       <div class="col-md-2"></div>

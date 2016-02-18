@@ -44,5 +44,5 @@ $(document).ready(function() {
     $('#product-name').val('');
     $('#product-price').val('');
   });
-
+  
 });
