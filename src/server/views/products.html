@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="container">
+<section class="home" id="home" data-stellar-background-ratio="0.4">
   <h1>Product List</h1>
   <p class="lead">Which would you like to purchase?</p>
   <a href="/">Go home</a>
@@ -26,11 +26,6 @@
       {% endfor %}
     </tbody>
   </table>
-</div>
-<style>
-body{
-  padding-top: 70px;
-}
-</style>
+</section>
 
 {% endblock %}
