@@ -9,13 +9,13 @@
   <div class="container">
     <h1>Product List</h1>
     <p class="lead">Which would you like to purchase?</p>
-    <a href="/">Go home</a>
     <br><br>
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8">
+        <a href="/">Go home</a>
         {% for product in products %}
-          <img src="{{ baseurl }}/img/joyfulNoise.png" alt="joyfulNoise">
+          <img src="{{ baseurl }}/img/joyfulNoise.jpg" alt="joyfulNoise">
           <br>
           <br>
           <a href="/product/{{product._id.toString()}}">{{ product.name }}</a>

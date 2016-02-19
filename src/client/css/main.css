@@ -51,6 +51,19 @@ h6 {
   letter-spacing: 1px;
   font-weight: 400;
 }
+
+h1.alternate,
+h2.alternate,
+h3.alternate,
+h4.alternate,
+h5.alternate,
+h6.alternate {
+  font-family: "Oswald";
+  color: grey;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
 .form-control {
   border-radius: 2px !important;
   padding: 15px 20px !important;
