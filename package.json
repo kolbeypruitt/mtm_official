@@ -1,5 +1,5 @@
 {
-  "name": "mtm_official",
+  "name": "node-stripe-charge",
   "version": "1.0.0",
   "description": "Landing page and store for Mike T Music",
   "scripts": {
