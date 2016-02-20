@@ -20,11 +20,9 @@
               <br>
               <br>
               <br>
-              <br>
-              <br>
-              <p class="hero-sub-title">Checkout My New EP</p>
+<!--               <p class="hero-sub-title">Checkout My New EP</p>
               <a href="/charge/56c5208397019d8861d6ba5a" class="btn btn-default btn-lg left-btn">Purchase Now</a>
-              <a href="/product/56c5208397019d8861d6ba5a" class="btn btn-main btn-lg">Find Out More</a>
+              <a href="/product/56c5208397019d8861d6ba5a" class="btn btn-main btn-lg">Find Out More</a> -->
             </div>
           </div>
         </div>
@@ -53,7 +51,7 @@
             <div class="col-md-5">
               <div class="section-title st-center">
                 <h2 class="alternate">Featured in Lucy's</h2>
-                <a href="magazine.html" target='_new'>
+                <a href="/magazine" target='_new'>
                   <p>Read Article</p>
                   <img src="{{ baseurl }}/img/mag-thumbnail.png" class="img-responsive" id="album-img">
                 </a>
@@ -91,6 +89,20 @@
         </div>
       </div>
     </div>
+  </section>
+  <section>
+    <form action="/stripe" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_LBAIutNdUcENELbP79ZG5yVI"
+        data-image="img/mtm_logo.svg"
+        data-name="Make Purchase"
+        data-description="Input Information"
+        data-amount="2000"
+        data-locale="auto"
+        data-shippingAddress="true">
+      </script>
+    </form>
   </section>
 
 {% endblock %}

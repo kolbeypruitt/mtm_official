@@ -14,4 +14,8 @@ router.get('/followMe', function(req, res, next) {
   res.render('followMe', {user: req.user});
 });
 
+router.get('/magazine', function(req, res, next) {
+  res.render('magazine', {user: req.user});
+});
+
 module.exports = router;
