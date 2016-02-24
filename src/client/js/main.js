@@ -32,7 +32,7 @@ $(document).ready(function() {
     var payload = {name: $('#product-name').val(), amount:$('#product-price').val()};
     $.ajax({
       type: 'POST',
-      url: '/api/v1/products',
+      url: '/api/v2/products',
       data: payload
     })
     .done(function(data) {

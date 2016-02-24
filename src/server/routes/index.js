@@ -18,4 +18,8 @@ router.get('/magazine', function(req, res, next) {
   res.render('magazine', {user: req.user});
 });
 
+router.get('/redirect', function(req, res, next) {
+  res.render('redirect', {user: req.user});
+});
+
 module.exports = router;

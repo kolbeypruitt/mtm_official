@@ -41,6 +41,7 @@ router.get('/login', loginRedirect, function(req, res, next){
 });
 
 router.post('/login', function(req, res, next) {
+  // console.log(req.get('Referrer'));
   passport.authenticate('local', function(err, user, info) {
     if (err) {
       return next(err);
@@ -54,7 +55,7 @@ router.post('/login', function(req, res, next) {
         return next(err);
       }
       req.flash('success', 'Welcome!');
-      return res.redirect('/');
+      return res.redirect('/redirect');
     });
   })(req, res, next);
 });

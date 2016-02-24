@@ -18,7 +18,9 @@
           <br>
           <br>
           {% if user %}
-            <a class="btn btn-primary" href="/charge/{{product._id.toString()}}" role="button">Buy Now</a>
+
+            <a class="btn btn-primary" id="customButton"  role="button">Buy Now</a>
+
           {% else %}
             <h3>Please <a href="/auth/login">log in</a> to Purchase!</h3>
           {% endif %}
@@ -28,5 +30,35 @@
     </div>
   </div>
 </section>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_LBAIutNdUcENELbP79ZG5yVI',
+    image: '/img/mtm_logo.svg',
+    locale: 'auto',
+    shippingAddress: 'true',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Stripe.com',
+      description: '2 widgets',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
 
 {% endblock %}
