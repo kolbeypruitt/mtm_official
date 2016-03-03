@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var moment = require('moment');
-
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 var passport = require('../lib/auth');
 var User = require('../models/user');
 
@@ -12,24 +12,32 @@ router.get('/register', function(req, res, next){
 
 
 router.post('/register', function(req, res, next) {
+
   var newUser = new User(req.body);
   newUser.generateHash(req.body.password, function(err, hash) {
     if (err) {
       return next(err);
     } else {
+      
       newUser.password = hash;
       newUser.save(function(err, results){
         if (err) {
           req.flash('danger', 'Sorry. That email already exists. Try again.');
-          return res.redirect("/auth/register");
+            return res.redirect("/auth/register");
         } else {
-          req.logIn(newUser, function(err) {
-            if (err) {
-              return next(err);
-            }
-            req.flash('success', 'Successfully registered (and logged in).');
-            return res.redirect('/');
-          });
+          stripe.customers.create(
+            { email: req.body.email }).then(function(customer) {
+              newUser.cus_id = customer.id
+            req.logIn(newUser, function(err) {
+              if (err) {
+                return next(err);
+              }
+              req.flash('success', 'Successfully registered (and logged in).');
+              return res.redirect('/');
+            });
+          }).then(function (customerId) {
+            newUser.save();
+          })
         }
       });
     }

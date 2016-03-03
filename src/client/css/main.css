@@ -29,7 +29,7 @@ p {
   margin-bottom: 26px;
 }
 p.lead {
-  color: #fff;
+  color: grey;
 }
 a {
   color: #4ecdc4;
@@ -47,7 +47,7 @@ h4,
 h5,
 h6 {
   font-family: "Oswald";
-  color: #fff;
+  color: grey;
   letter-spacing: 1px;
   font-weight: 400;
 }
@@ -1658,4 +1658,16 @@ footer.site-footer a:hover {
 
 #alert-flag {
   margin-top: 80px;
+}
+
+.products-thumnail {
+  width: 200px;
+  height: auto;
+  border: 2px solid gray;
+}
+
+.priorities-img {
+  width: 450px;
+  height: auto;
+  border: 2px solid gray;
 }

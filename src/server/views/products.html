@@ -1,31 +1,90 @@
 {% extends '_base.html' %}
-
 {% block title %}{% endblock %}
-
-
 {% block content %}
+  <section class="standard-section" id="products">
+    <div class="container">
+      <h1>Product List</h1>
+      <p class="lead">Which would you like to purchase?</p>
+      <a class="btn btn-danger" href="/">Go home</a>
+      <br><br>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          {% for product in products %}
+            <h1>{{ product.name }}</h1>
+            <img class="products-thumnail" src="{{ baseurl }}/img/priorities_cover.png" alt="priorities_cover">
+            <br>
+            <br>
+            <a class="btn btn-primary modal__trigger" data-modal="#modal2" href="/product/{{product._id.toString()}}">Check it out</a>
+            <br>
+            <h4>${{ product.amount }}</h4>
 
-<section class="standard-section" id="products">
-  <div class="container">
-    <h1>Product List</h1>
-    <p class="lead">Which would you like to purchase?</p>
-    <br><br>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <a href="/">Go home</a>
-        {% for product in products %}
-          <img src="{{ baseurl }}/img/joyfulNoise.jpg" alt="joyfulNoise">
-          <br>
-          <br>
-          <a href="/product/{{product._id.toString()}}">{{ product.name }}</a>
-          <br>
-          <p>${{ product.amount }}</p>
-        {% endfor %}
+            <div id="modal2" class="modal modal--align-top modal__bg" role="dialog" aria-hidden="true">
+              <div class="modal__dialog">
+                <div class="modal__content">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p><img class="img-responsive products-modal-img" src="{{ baseurl }}/img/priorities_cover.png" alt="priorities_cover"></p>
+                    </div>
+                    <div class="col-md-6">
+                      <h1>{{ product.name }}</h1>
+                        <h3>${{ product.amount }}</h3>                      
+                      
+                      <table class="table">
+                        <th>Songs</th>
+                        <th>Time</th>
+                        <tbody>
+                          <tr>
+                            <td>1. What We Stand To Lose</td>
+                            <td>3:36</td>
+                          </tr>
+                          <tr>
+                            <td>2. Jesus Is Coming Soon</td>
+                            <td>-:--</td>
+                          </tr>
+                          <tr>
+                            <td>3. Come Ye Sinners</td>
+                            <td>-:--</td>
+                          </tr>
+                          <tr>
+                            <td>4. Congratulation (for Karla)</td>
+                            <td>-:--</td>
+                          </tr>
+                          <tr>
+                            <td>5. The Conversation (feat. Taylor Cunningham)</td>
+                            <td>-:--</td>
+                          </tr>
+                          <tr>
+                            <td>6. Come Thou Fount (Violin By Taylor Cunningham)</td>
+                            <td>-:--</td>
+                          </tr>
+                          <tr>
+                            <td>7. Christ Alone (Feat. Taylor Ude)</td>
+                            <td>-:--</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- modal close button -->
+                      <a href="" class="modal__close demo-close">
+                        <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div>
       </div>
-      <div class="col-md-2"></div>
     </div>
-  </div>
-</section>
 
+
+    
+  </div>
+  <div class="col-md-3"></div>
+</div>
+</div>
+</section>
 {% endblock %}
