@@ -1,8 +1,12 @@
-#modal2 h1,h2,h4,h5,h6 {
+#modal2 a,h1,h2,h4,h5,h6 {
   color: black;
 }
 
 #modal2 h3 {
+  color: white;
+}
+
+#modal2 a:hover {
   color: white;
 }
 
@@ -215,7 +219,3 @@
   height: auto;
   border: 2px solid gray;
 }
-
-/*.price {
-  color: 
-}*/

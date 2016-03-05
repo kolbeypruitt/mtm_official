@@ -11,6 +11,9 @@ var Product = new Schema({
   forSale: {
     type: Boolean,
     default: true
+  },
+  prod_id: {
+    type: String
   }
 });
 

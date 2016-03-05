@@ -121,10 +121,11 @@ var Modal = (function() {
   };
 
   var close = function(event) {
-
+    if(event.target.className === 'loginBtn') {
+      return;
+    }
     event.preventDefault();
     event.stopImmediatePropagation();
-
     var target = event.target;
     var div = document.getElementById('modal__temp');
 

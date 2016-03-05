@@ -41,17 +41,25 @@ router.get('/products', ensureAuthenticated, function(req, res, next) {
     }
   });
 });
-
+// this needs fixed v v v v v v v v v v
 router.post('/products', function(req, res) {
   var product = new Product({ name: req.body.name, amount: req.body.amount });
   product.save(function(err, results) {
     if (err) {
       return next(err);
     } else {
+      stripe.products.create({
+        name: req.body.name
+      }).then(function (prod) {
+        product.prod_id = prod.id;
+      }).then(function (product) {
+        product.save();
+      })
       res.send(results);
     }
   });
 });
+
 
 router.get('/product/:id', function(req, res, next) {
   var productID = req.params.id;

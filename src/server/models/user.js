@@ -18,8 +18,7 @@ var User = new Schema({
   },
   cus_id: {
     type: String,
-    unique: true,
-    lowercase: false
+    unique: true
   },
   products: [
     {
