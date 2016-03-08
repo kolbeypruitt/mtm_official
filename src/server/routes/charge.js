@@ -47,6 +47,7 @@ router.post('/stripe', ensureAuthenticated, function(req, res, next) {
   // Obtain StripeToken
   var stripeToken = req.body.stripeToken;
   var userID = req.user._id;
+  var receiptEmail = req.body.email;
   // Simple validation
   User.findById(userID, function(err, user) {
     if (err) {
@@ -58,13 +59,13 @@ router.post('/stripe', ensureAuthenticated, function(req, res, next) {
           currency: "usd",
           source: stripeToken, // obtained with Stripe.js
           description: "Priorities - EP",
-          receipt_email: user.email
+          receipt_email: receiptEmail
         }, function(err, charge) {
           if(err) {
             return next(err);
           } else {
             req.flash('success', 'Thanks for purchasing the Priorities - EP!');
-            res.redirect('auth/profile');
+            res.redirect('/success');
           }
         });
     }

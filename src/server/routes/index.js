@@ -18,4 +18,8 @@ router.get('/magazine', function(req, res, next) {
   res.render('magazine', {user: req.user});
 });
 
+router.get('/success', function(req, res, next) {
+  res.render('success', {user: req.user});
+});
+
 module.exports = router;
