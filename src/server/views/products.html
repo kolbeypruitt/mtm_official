@@ -98,7 +98,7 @@
     data-shipping-address="true">
   </script>
 </form>
-<!-- <script>
+<script>
 var handler = StripeCheckout.configure({
 key: 'pk_test_LBAIutNdUcENELbP79ZG5yVI',
 image: '/img/mtm_logo.svg',
@@ -112,19 +112,7 @@ token: function(token) {
 });
 
 $('#buyNow').on('click', function(e) {
-
-// Open Checkout with further options
-handler.open({
-name: 'Stripe.com',
-description: '{{'Purchase '+product1.name}}',
-amount: '{{ parseInt(product1.amount)*100 }}',
-customer: '{{ user.cus_id }}'
+  $('.stripe-button-el').click();
 });
-e.preventDefault();
-});
-// Close Checkout on page navigation
-$(window).on('popstate', function() {
-handler.close();
-});
-</script> -->
+</script>
 {% endblock %}
