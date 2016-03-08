@@ -12,8 +12,6 @@ var mongoose = require('mongoose');
 var swig = require('swig');
 var passport = require('./lib/auth');
 var LocalStrategy = require('passport-local').Strategy;
-http = require("https");
-
 
 // *** seed the database *** //
 if (process.env.NODE_ENV === 'development') {
