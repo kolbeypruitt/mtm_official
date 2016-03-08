@@ -19,7 +19,7 @@ router.post('/stripe', function(req, res, next) {
   console.log(req.body);
   // Obtain StripeToken
   var stripeToken = req.body.stripeToken;
-  var receiptEmail = req.body.email;
+  var receiptEmail = req.body.stripeEmail;
   // Simple validation
   stripe.charges.create({
     amount: 500,
