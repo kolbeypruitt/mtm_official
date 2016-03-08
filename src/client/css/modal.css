@@ -81,12 +81,9 @@
 .modal__trigger {
   position: relative;
   display: inline-block;
-  padding: 1.2rem 2.4rem;
-  color: rgba(0,0,0,0.7);
-  line-height: 1;
+  color: white;
   cursor: pointer;
   background: #4ecdc4;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -94,12 +91,14 @@
           user-select: none;
   -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border: none;
 }
 .modal__trigger--active {
   z-index: 10;
 }
 .modal__trigger:hover {
   background: #31bcb1;
+  color: white;
 }
 #modal__temp {
   will-change: transform, opacity;
