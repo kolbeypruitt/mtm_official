@@ -4,7 +4,7 @@ var router = express.Router();
 var passport = require('../lib/auth');
 var User = require('../models/user');
 var Product = require('../models/product');
-
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // users
 
@@ -43,6 +43,7 @@ router.get('/products', ensureAuthenticated, function(req, res, next) {
 });
 // this needs fixed v v v v v v v v v v
 router.post('/products', function(req, res) {
+  console.log(req.body);
   var product = new Product({ name: req.body.name, amount: req.body.amount });
   product.save(function(err, results) {
     if (err) {
@@ -52,7 +53,6 @@ router.post('/products', function(req, res) {
         name: req.body.name
       }).then(function (prod) {
         product.prod_id = prod.id;
-      }).then(function (product) {
         product.save();
       })
       res.send(results);

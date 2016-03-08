@@ -10,7 +10,7 @@ router.get('/products', function(req, res, next){
     if (err) {
       return next(err);
     } else {
-      return res.render('products', {products: data, user: req.user});
+      return res.render('products', {products: data, user: req.user, product1: data[0]});
     }
   });
 });
@@ -43,42 +43,47 @@ router.get('/stripe', function(req, res, next) {
 
 
 router.post('/stripe', ensureAuthenticated, function(req, res, next) {
+  console.log(req.body);
   // Obtain StripeToken
   var stripeToken = req.body.stripeToken;
   var userID = req.user._id;
+  var receiptEmail = req.body.stripeEmail;
+  var customer = 
   // Simple validation
   Product.findById(req.body.productID, function(err, data) {
     if (err) {
       return next(err);
     } else {
-      if (parseInt(req.body.productAmount) !== data.amount) {
-        req.flash('success', 'Error!');
-        return res.redirect('/');
-      } else {
+      // if (parseInt(req.body.productAmount) !== data.amount) {
+      //   req.flash('success', 'Error!');
+      //   return res.redirect('/');
+      // } else {
         // Get product details
-        User.findById(userID, function(err, data) {
-          if (err) {
-            return next(err);
-          } else {
-            data.products.push({ productID: req.body.productID, token: stripeToken });
-            data.save();
-          }
-        });
+        // User.findById(userID, function(err, data) {
+        //   if (err) {
+        //     return next(err);
+        //   } else {
+        //     // data.products.push({ productID: req.body.productID, token: stripeToken });
+        //     // data.save();
+        //   }
+        // });
         // Create Charge
-        var charge = {
-          amount: parseInt(req.body.productAmount)*100,
-          currency: 'USD',
-          card: stripeToken
-        };
-        stripe.charges.create(charge, function(err, charge) {
+        stripe.charges.create({
+          amount: 500,
+          currency: "usd",
+          source: stripeToken, // obtained with Stripe.js
+          description: "Priorities - EP",
+          receipt_email: receiptEmail,
+          customer: 
+        }, function(err, charge) {
           if(err) {
             return next(err);
           } else {
-            req.flash('success', 'Thanks for purchasing a '+req.body.productName+'!');
+            req.flash('success', 'Thanks for purchasing the Priorities - EP!');
             res.redirect('auth/profile');
           }
         });
-      }
+      // }
     }
   });
 });

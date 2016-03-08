@@ -63,7 +63,7 @@ router.post('/login', function(req, res, next) {
         return next(err);
       }
       req.flash('success', 'Welcome!');
-      return res.redirect('/redirect');
+      return res.redirect('/');
     });
   })(req, res, next);
 });

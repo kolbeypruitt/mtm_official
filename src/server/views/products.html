@@ -15,10 +15,7 @@
             <img class="products-thumnail" src="{{ baseurl }}/img/priorities_cover.png" alt="priorities_cover">
             <br>
             <br>
-            <!-- <div class="span12" style="text-align:center"> -->
-            <span>
-              <a class="btn btn-primary modal__trigger align-center" data-modal="#modal2" href="/product/{{product._id.toString()}}">Check it out</a><h4>${{ product.amount }}</h4>
-            </span>
+            <a class="btn btn-primary modal__trigger align-center" data-modal="#modal2" href="/product/{{product._id.toString()}}">Check it out</a>
             <!-- </div> -->
             <div id="modal2" class="modal modal--align-top modal__bg" role="dialog" aria-hidden="true">
               <div class="modal__dialog">
@@ -66,7 +63,7 @@
                         </tbody>
                       </table>
                       {% if user %}
-                        <a class="btn btn-primary" id="customButton"  role="button">Buy Now</a>
+                        <a class="btn btn-info loginBtn" id="buyNow" role="button">Buy Now</a>
                       {% else %}
                         <h3>Please <a class="loginBtn" href="/auth/login">log in</a> to Purchase!</h3>
                       {% endif %}
@@ -88,4 +85,47 @@
 </div>
 </div>
 </section>
+<!-- <script src="https://checkout.stripe.com/checkout.js"></script> -->
+<form action="/stripe" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-key="pk_test_LBAIutNdUcENELbP79ZG5yVI"
+    data-image="/img/mtm_logo.svg"
+    data-name="Pay Now"
+    data-description="{{'Purchase '+product1.name}}"
+    data-customer="{{ user.cus_id }}"
+    data-amount={{parseInt(product1.amount)*100}}
+    data-shipping-address="true">
+  </script>
+</form>
+<!-- <script>
+var handler = StripeCheckout.configure({
+key: 'pk_test_LBAIutNdUcENELbP79ZG5yVI',
+image: '/img/mtm_logo.svg',
+locale: 'auto',
+shippingAddress: 'true',
+receipt_email: 'true',
+token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+});
+
+$('#buyNow').on('click', function(e) {
+
+// Open Checkout with further options
+handler.open({
+name: 'Stripe.com',
+description: '{{'Purchase '+product1.name}}',
+amount: '{{ parseInt(product1.amount)*100 }}',
+customer: '{{ user.cus_id }}'
+});
+e.preventDefault();
+});
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+handler.close();
+});
+</script> -->
 {% endblock %}

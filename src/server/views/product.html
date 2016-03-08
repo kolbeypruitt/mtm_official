@@ -49,7 +49,7 @@
             </table>
             <br>
             {% if user %}
-              <a class="btn btn-primary" id="customButton"  role="button">Buy Now</a>
+              <a class="btn btn-primary" id="buyNow"  role="button">Buy Now</a>
             {% else %}
               <h3>Please <a href="/auth/login">log in</a> to Purchase!</h3>
             {% endif %}
@@ -72,7 +72,7 @@
   // You can access the token ID with `token.id`
   }
   });
-  $('#customButton').on('click', function(e) {
+  $('#buyNow').on('click', function(e) {
   // Open Checkout with further options
   handler.open({
   name: 'Stripe.com',
