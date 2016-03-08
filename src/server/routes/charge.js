@@ -15,68 +15,26 @@ router.get('/products', function(req, res, next){
   });
 });
 
-router.get('/product/:id', function(req, res, next) {
-  var productID = req.params.id;
-  Product.findById(productID, function(err, data) {
-    if(err) {
-      return next(err);
-    } else {
-      return res.render('product', {product: data, user: req.user});
-    }
-  });
-});
-
-router.get('/charge/:id', ensureAuthenticated, function(req, res, next) {
-  var productID = req.params.id;
-  return Product.findById(productID, function(err, data) {
-    if (err) {
-      return next(err);
-    } else {
-      return res.render('charge', {product: data, user: req.user});
-    }
-  });
-});
-
-router.get('/stripe', function(req, res, next) {
-  res.send("Scram!");
-});
-
-
-router.post('/stripe', ensureAuthenticated, function(req, res, next) {
+router.post('/stripe', function(req, res, next) {
   console.log(req.body);
   // Obtain StripeToken
   var stripeToken = req.body.stripeToken;
-  var userID = req.user._id;
   var receiptEmail = req.body.email;
   // Simple validation
-  User.findById(userID, function(err, user) {
-    if (err) {
+  stripe.charges.create({
+    amount: 500,
+    currency: "usd",
+    source: stripeToken, // obtained with Stripe.js
+    description: "Priorities - EP",
+    receipt_email: receiptEmail
+  }, function(err, charge) {
+    if(err) {
       return next(err);
     } else {
-      
-        stripe.charges.create({
-          amount: 500,
-          currency: "usd",
-          source: stripeToken, // obtained with Stripe.js
-          description: "Priorities - EP",
-          receipt_email: receiptEmail
-        }, function(err, charge) {
-          if(err) {
-            return next(err);
-          } else {
-            req.flash('success', 'Thanks for purchasing the Priorities - EP!');
-            res.redirect('/success');
-          }
-        });
+      req.flash('success', 'Thanks for purchasing the Priorities - EP!');
+      res.redirect('/success');
     }
   });
 });
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  req.flash('success', 'You must be signed in to view this page!');
-  res.redirect('/auth/login');
-}
-
 
 module.exports = router;

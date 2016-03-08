@@ -62,11 +62,7 @@
                           </tr>
                         </tbody>
                       </table>
-                      {% if user %}
                         <a class="btn btn-info loginBtn" id="buyNow" role="button">Buy Now</a>
-                      {% else %}
-                        <h3>Please <a class="loginBtn" href="/auth/login">log in</a> to Purchase!</h3>
-                      {% endif %}
                       <!-- modal close button -->
                       <a href="" class="modal__close demo-close">
                         <svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/></svg>
@@ -93,7 +89,6 @@
     data-image="/img/mtm_logo.png"
     data-name="Pay Now"
     data-description="{{'Purchase '+product1.name}}"
-    data-customer="{{ user.cus_id }}"
     data-amount={{parseInt(product1.amount)*100}}
     data-shipping-address="true">
   </script>

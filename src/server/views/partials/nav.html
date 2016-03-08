@@ -23,15 +23,6 @@
             <li><a href="/products">Store</a></li>
             <!-- <li><a href="#blog">Blog</a></li> -->
             <li><a href="#followMe">Follow Me</a></li>
-            {% if user.admin %}
-              <li><a href="/auth/admin">Admin</a></li>
-              <li><a href="/auth/profile">Profile</a></li>
-              <li><a href="/auth/logout">Logout</a></li>
-            {% elseif user %}
-              <li><a href="/auth/logout">Logout as {{user.email}}</a></li>
-            {% else %}
-              <li><a href="/auth/login">Register/Login</a></li>
-            {% endif %}
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
