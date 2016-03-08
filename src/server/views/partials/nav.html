@@ -28,8 +28,7 @@
               <li><a href="/auth/profile">Profile</a></li>
               <li><a href="/auth/logout">Logout</a></li>
             {% elseif user %}
-              <li><a href="/auth/profile">Profile</a></li>
-              <li><a href="/auth/logout">Logout</a></li>
+              <li><a href="/auth/logout">Logout as {{user.email}}</a></li>
             {% else %}
               <li><a href="/auth/login">Register/Login</a></li>
             {% endif %}

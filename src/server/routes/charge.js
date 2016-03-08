@@ -47,34 +47,18 @@ router.post('/stripe', ensureAuthenticated, function(req, res, next) {
   // Obtain StripeToken
   var stripeToken = req.body.stripeToken;
   var userID = req.user._id;
-  var receiptEmail = req.body.stripeEmail;
-  var customer = 
   // Simple validation
-  Product.findById(req.body.productID, function(err, data) {
+  User.findById(userID, function(err, user) {
     if (err) {
       return next(err);
     } else {
-      // if (parseInt(req.body.productAmount) !== data.amount) {
-      //   req.flash('success', 'Error!');
-      //   return res.redirect('/');
-      // } else {
-        // Get product details
-        // User.findById(userID, function(err, data) {
-        //   if (err) {
-        //     return next(err);
-        //   } else {
-        //     // data.products.push({ productID: req.body.productID, token: stripeToken });
-        //     // data.save();
-        //   }
-        // });
-        // Create Charge
+      
         stripe.charges.create({
           amount: 500,
           currency: "usd",
           source: stripeToken, // obtained with Stripe.js
           description: "Priorities - EP",
-          receipt_email: receiptEmail,
-          customer: 
+          receipt_email: user.email
         }, function(err, charge) {
           if(err) {
             return next(err);
@@ -83,7 +67,6 @@ router.post('/stripe', ensureAuthenticated, function(req, res, next) {
             res.redirect('auth/profile');
           }
         });
-      // }
     }
   });
 });
