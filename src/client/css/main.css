@@ -1671,7 +1671,3 @@ footer.site-footer a:hover {
   height: auto;
   border: 2px solid gray;
 }
-
-.stripe-button-el {
-  visibility: hidden;
-}
