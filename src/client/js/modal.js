@@ -164,7 +164,9 @@ var Modal = (function() {
       setTimeout(function() {
         window.requestAnimationFrame(function() {
           // remove the temp div from the dom with a slight delay so the animation looks good
-          div.remove();
+          if (div) {
+            div.parentNode.removeChild(div);
+          }
         });
       }, contentDelay - 50);
     }
