@@ -3,10 +3,9 @@
 {% block content %}
   <section class="standard-section" id="products">
     <div class="container">
-      <h1>Product List</h1>
-      <p class="lead">Which would you like to purchase?</p>
+<!--       <h1>Product List</h1>
+      <p class="lead">Which would you like to purchase?</p> -->
       <a class="btn btn-danger" href="/">Go home</a>
-      <br><br>
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -15,9 +14,11 @@
             <img class="products-thumnail" src="{{ baseurl }}/img/priorities_cover.png" alt="priorities_cover">
             <br>
             <br>
-            <a class="btn modal__trigger align-center" data-modal="#modal2" role="
+            <div>
+            <a class="btn pull-left modal__trigger" data-modal="#modal2" role="
             button">See Songs</a>
-            <a class="btn btn-info loginBtn" id="buyNow" role="button">Buy Now</a>
+            <a class="btn btn-info pull-right loginBtn" id="buyNow" role="button">Buy Now</a>
+            </div>
             <!-- </div> -->
             <div id="modal2" class="modal modal--align-top modal__bg" role="dialog" aria-hidden="true">
               <div class="modal__dialog">
