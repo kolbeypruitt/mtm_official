@@ -32,35 +32,38 @@
                       
                       <table class="table">
                         <th>Songs</th>
-                        <!-- <th>Time</th> -->
+                        <th>Time</th>
                         <tbody>
                           <tr>
                             <td>1. What We Stand To Lose</td>
-                            <!-- <td>3:36</td> -->
+                            <td>4:00</td>
                           </tr>
                           <tr>
                             <td>2. Jesus Is Coming Soon</td>
-                            <!-- <td>-:--</td> -->
+                            <td>2:36</td>
                           </tr>
                           <tr>
                             <td>3. Come Ye Sinners</td>
-                            <!-- <td>-:--</td> -->
+                            <td>2:17</td>
                           </tr>
                           <tr>
                             <td>4. Congratulation (for Karla)</td>
-                            <!-- <td>-:--</td> -->
+                            <td>3:14</td>
                           </tr>
                           <tr>
-                            <td>5. The Conversation (feat. Taylor Cunningham)</td>
-                            <!-- <td>-:--</td> -->
+                            <td>5. The Conversation (feat. Taylor Cunningham)
+                              <audio id="sample" src="audio/conversation_sample.mp3" preload="auto"></audio>
+                              <a href="" id="play"><span id="playPauseText"> play </span><span id="playSvg" class="glyphicon glyphicon-play-circle"></span></a>
+                            </td>
+                            <td>4:03</td>
                           </tr>
                           <tr>
                             <td>6. Come Thou Fount (Violin By Taylor Cunningham)</td>
-                            <!-- <td>-:--</td> -->
+                            <td>2:29</td>
                           </tr>
                           <tr>
                             <td>7. Christ Alone (Feat. Taylor Ude)</td>
-                            <!-- <td>-:--</td> -->
+                            <td>2:46</td>
                           </tr>
                         </tbody>
                       </table>
@@ -95,7 +98,37 @@
     data-shipping-address="true">
   </script>
 </form>
+<style type="text/css">
+  #play {
+    border: 2px solid black;
+    margin: 1px 1px;
+    padding: 1px 1px;
+    border-radius: 3px;
+  }
+
+  .table>tbody>tr>td {
+    padding: 6px 6px;
+  }
+</style>
 <script>
+// sample song play button
+var play;
+var audioSample = document.getElementById('sample');
+var icon = document.getElementById('playSvg');
+var playPauseText = document.querySelector('#playPauseText')
+document.getElementById('play').addEventListener("click", function(){
+  if (!play) {
+    playPauseText.innerHTML = " replay ";
+    play = true;
+    audioSample.play();
+    icon.className = "glyphicon glyphicon-repeat";
+  } else if (play) {
+    play = false;
+    audioSample.currentTime = 0;
+    audioSample.play();
+  }
+});
+
 var handler = StripeCheckout.configure({
 key: 'pk_live_b1fKAAtzMASVblPpI2RIoPI0',
 image: '/img/mtm_logo.png',
