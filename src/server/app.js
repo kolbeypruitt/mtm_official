@@ -41,7 +41,7 @@ var app = express();
 swig = new swig.Swig();
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-
+// app.use(favicon(__dirname + './../client/img/favicon.png'));
 
 // *** static directory *** ///
 app.set('views', path.join(__dirname, './views'));
