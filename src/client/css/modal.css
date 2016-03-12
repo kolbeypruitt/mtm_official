@@ -222,3 +222,23 @@ a#buyNow2 {
   height: auto;
   border: 2px solid gray;
 }
+
+
+/*sample track styling*/
+.table>tbody>tr>td {
+  padding: 6px 6px;
+}
+
+#play {
+  border: 2px solid white;
+  margin: 1px 1px;
+  padding: 2px 2px;
+  border-radius: 3px;
+}
+
+#play:hover {
+  border: 2px solid black;
+}
+.playColor {
+  color: white;
+}

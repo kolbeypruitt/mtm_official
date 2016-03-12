@@ -54,7 +54,9 @@
                           <tr>
                             <td>5. The Conversation (feat. Taylor Cunningham)
                               <audio id="sample" src="audio/conversation_sample.mp3" preload="auto"></audio>
-                              <a href="" id="play"><span id="playPauseText"> play </span><span id="playSvg" class="glyphicon glyphicon-play-circle"></span></a>
+                              <a class="playColor" href="" id="play">
+                                <span class="playColor" id="playPauseText"> play </span><span class="glyphicon glyphicon-play-circle playColor" id="playSvg"></span>
+                              </a>
                             </td>
                             <td>4:03</td>
                           </tr>
@@ -100,16 +102,7 @@
   </script>
 </form>
 <style type="text/css">
-  #play {
-    border: 2px solid black;
-    margin: 1px 1px;
-    padding: 1px 1px;
-    border-radius: 3px;
-  }
-
-  .table>tbody>tr>td {
-    padding: 6px 6px;
-  }
+  
 </style>
 <script>
 // sample song play button
