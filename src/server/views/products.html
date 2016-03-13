@@ -3,11 +3,10 @@
 {% block content %}
   <section class="standard-section" id="products">
     <div class="container">
-<!--       <h1>Product List</h1>
-      <p class="lead">Which would you like to purchase?</p> -->
-      <a class="btn btn-danger" href="/">Go home</a>
       <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <a class="btn btn-danger" href="/">Go home</a>
+        </div>
         <div class="col-md-4">
           {% for product in products %}
             <h1>{{ product.name }}</h1>
