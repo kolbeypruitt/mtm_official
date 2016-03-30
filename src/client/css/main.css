@@ -8,6 +8,7 @@
  * -------------------------------------------------------------------
  * This theme under "Attribution-NonCommercial CC BY-NC". You can't remove footer credit link.
  */
+
 body {
   font-family: "Open Sans";
   color: black;
@@ -1618,11 +1619,18 @@ textarea.formFieldError {
   border-color: #e34444 !important;
 }
 footer.site-footer {
+  width: 100%;
   background-color: black;
   padding: 10px 0;
   color: #fcfcfc;
   font-size: 13px;
   text-align: center;
+}
+
+footer.lock-footer {
+  position:absolute;
+  bottom:0;
+  left: 0;
 }
 footer.site-footer a {
   color: #fcfcfc;
