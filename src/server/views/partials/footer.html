@@ -11,7 +11,7 @@
 <script>
     // class moves footer to bottom for products page
     console.log(window.location.href);
-    if (window.location.href==='http://localhost:3000/products') {
+    if (window.location.href===window.location.origin + '/products') {
       document.getElementById('footer').className = 'site-footer lock-footer';
     }
 </script>
